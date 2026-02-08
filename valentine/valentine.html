@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOVE</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif; /* Softer, romantic font */
+            background: linear-gradient(135deg, #ffe6e6, #925056, #e47a8d); /* Pastel romantic gradient */
+            color: #5a2d2d; /* Deep rose text for warmth */
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .container {
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(255, 107, 157, 0.3); /* Soft pink glow */
+            max-width: 500px;
+        }
+
+        .teddy {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #c76f9b; /* Romantic deep pink */
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6; /* Better readability for romantic text */
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff6b9d, #fc57a9); /* Gradient buttons for romance */
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+
+        #no-btn {
+            background: linear-gradient(45deg, #ff6b9d, #fc57a9); /* Softer for "No" */
+            position: relative; /* For movement */
+        }
+
+        .message {
+            display: none;
+            font-style: italic;
+            color: #5a2d2d;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://i.pinimg.com/originals/c5/c6/73/c5c673dc3cb4ebd03675713b984a25cd.gif" alt="Teddy Bear" class="teddy"> <!-- Replace with your teddy image URL -->
+        <h1> Nikita, Will You Be My Valentine? 💕</h1>
+        <div class="buttons">
+            <button id="yes-btn">Yes ❤️</button>
+            <button id="no-btn">No ☹️</button>
+        </div>
+        <p class="message" id="love-note">
+            Yay! Best Valentine's Day Ever 💖
+        </p>
+        <p class="message" id="no-note" style="display: none;">
+            I am Sad ☹️
+        </p>
+    </div>
+
+    <script>
+        // Button Interactions
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const loveNote = document.getElementById('love-note');
+        const noNote = document.getElementById('no-note');
+
+        // "No" button moves on hover until "Yes" is clicked
+        let yesClicked = false;
+        noBtn.addEventListener('mouseover', () => {
+            if (!yesClicked) {
+                noBtn.style.left = Math.random() * 200 - 100 + 'px';
+                noBtn.style.top = Math.random() * 200 - 100 + 'px';
+            }
+        });
+
+        yesBtn.addEventListener('click', () => {
+            yesClicked = true;
+            loveNote.style.display = 'block';
+            noNote.style.display = 'none';
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+        });
+
+        noBtn.addEventListener('click', () => {
+            noNote.style.display = 'block';
+            loveNote.style.display = 'none';
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
